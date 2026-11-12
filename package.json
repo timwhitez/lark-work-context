@@ -1,0 +1,19 @@
+{
+  "name": "lark-work-context",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "按需补足企业事实的轻量 Agent Skill，复用官方 lark-cli skills 并保留正常本地开发能力。",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "check": "node scripts/check.mjs",
+    "test": "node --test tests/check.test.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/timwhitez/lark-work-context.git"
+  },
+  "license": "UNLICENSED"
+}
