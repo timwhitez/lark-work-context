@@ -2,8 +2,6 @@
 
 按需补足企业上下文的单文件 Agent Skill。只有当前任务依赖内部项目、团队约定或历史决定时，才通过官方 [lark-cli skills](https://github.com/larksuite/cli/tree/main/skills) 查询飞书资料；本地开发和个人任务照常进行。
 
-运行时只有英文的 [SKILL.md](skills/lark-work-context/SKILL.md)；其余是维护用的脚本、测试和中文文档，不随 Skill 安装。
-
 ## 适用范围
 
 - 适合：“这个项目为什么延期？”“我们上次怎么决定的？”（能定位到具体事项时）“按项目群确认的约定修接口，再跑测试。”
