@@ -21,7 +21,7 @@ export async function checkSkill(directory) {
   if (/^allowed-tools:/m.test(frontmatter[1])) throw new Error('This skill must not narrow the host tool set.');
   const lines = content.trimEnd().split(/\r?\n/).length;
   const bytes = Buffer.byteLength(content);
-  if (lines > 120 || bytes > 12000) throw new Error('Runtime guidance exceeds the project size budget.');
+  if (lines > 80 || bytes > 6000) throw new Error('Runtime guidance exceeds the project size budget.');
   if (!content.slice(frontmatter[0].length).trim()) throw new Error('Missing skill body.');
   return { name, lines, bytes, descriptionCharacters: [...description].length };
 }
@@ -39,7 +39,7 @@ export async function checkLocalLinks(file) {
 async function main() {
   const root = fileURLToPath(new URL('../', import.meta.url));
   const skill = await checkSkill(path.join(root, 'skills/lark-work-context'));
-  for (const file of ['README.md', 'AGENTS.md', 'docs/evaluation.md', 'docs/evaluation-results.md', 'skills/lark-work-context/SKILL.md']) {
+  for (const file of ['README.md', 'AGENTS.md', 'docs/evaluation.md', 'skills/lark-work-context/SKILL.md']) {
     await checkLocalLinks(path.join(root, file));
   }
   const cases = JSON.parse(await readFile(path.join(root, 'evals/cases.json'), 'utf8'));
