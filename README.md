@@ -44,7 +44,7 @@ lark-cli --version
 npx --yes skills add . --global --agent codex --skill lark-work-context --copy --yes
 ~~~
 
-当前 skills 安装器将 Codex 全局技能放在 ~/.agents/skills。以安装输出中的目标位置为准；旧版 Codex 或自定义 CODEX_HOME 的路径应遵循该宿主配置。现有不同内容可能被安装器覆盖，更新前先保留自己的修改。
+skills 安装器 1.8.1 将 Codex 全局技能安装到 ~/.agents/skills，以安装输出中的目标位置为准。当前 Codex 从这里读取用户技能，该位置不随 CODEX_HOME 改变；$CODEX_HOME/skills（默认 ~/.codex/skills）只是为兼容保留的旧位置，只有不支持 ~/.agents/skills 的早期 Codex 才需要放在那里。--copy 会先删除同名目标目录再复制，更新前先保留其中的本地修改。
 
 仓库可访问时，也可以将命令中的 . 换成 timwhitez/lark-work-context；私有仓库需要当前 Git 环境已有访问权限。
 
@@ -54,7 +54,7 @@ MCode 可使用其扫描到的共享 Agent Skills 目录，也支持当前 profi
 
 需要独立安装时，仅将 skills/lark-work-context 目录放入当前 profile 的用户 skills 目录（默认 ~/.minimax/skills）。自定义 dataDir 时使用该 dataDir 下的 skills，不修改全局 AGENTS.md、权限或 Hooks。
 
-安装后在新的会话或宿主的技能刷新入口确认能发现 lark-work-context。文件存在、技能被发现、模型实际触发是不同状态；不要只用“文件复制成功”代替运行验证。
+MCode 的技能从下一个新会话开始生效；安装后新建会话，确认可用技能中出现 lark-work-context。文件存在、技能被发现、模型实际触发是不同状态；不要只用“文件复制成功”代替运行验证。
 
 ### 其他宿主
 
@@ -83,11 +83,13 @@ MCode 可使用其扫描到的共享 Agent Skills 目录，也支持当前 profi
 
 ~~~text
 skills/lark-work-context/SKILL.md  唯一运行时文件
-scripts/check.mjs                零依赖包结构、元数据及链接检查
-tests/check.test.mjs             验证器的正反例测试
-evals/cases.json                 离线行为验收案例
-docs/evaluation.md               评估方法与已知验证边界
-AGENTS.md                       维护本仓库的 Agent 约定
+scripts/check.mjs                  零依赖的运行包、元数据、体量、链接和案例格式检查
+tests/check.test.mjs               验证器的正反例测试
+evals/cases.json                   离线行为验收案例
+docs/evaluation.md                 评估方法与已知验证边界
+docs/evaluation-results.md         首轮评估的实际结果与限制
+AGENTS.md                          维护本仓库的 Agent 约定
+package.json                       Node.js 版本要求及 check、test 脚本
 ~~~
 
 README、AGENTS、测试和评估材料不安装进运行时技能目录。

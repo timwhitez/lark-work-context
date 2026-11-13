@@ -21,7 +21,7 @@
 ## 布局
 
 - skills/lark-work-context/：安装到 Agent 的内容。
-- scripts/check.mjs：结构、元数据、体量和相对链接检查。
+- scripts/check.mjs：运行包结构、元数据、体量、相对链接和评估案例格式检查。
 - tests/：验证器正反例；临时文件仅在本仓库 .local 下创建并清理。
 - evals/cases.json：固定离线行为案例，业务数据为虚构材料。
 - docs/evaluation.md：评估方法；evaluation-results.md：实际结果与限制。
@@ -39,7 +39,7 @@
 ## 验证
 
 - 改动后运行与变更有关的检查；新验证器行为用正反例证明。
-- 提交前在本地运行 npm ci --ignore-scripts、npm run check、npm test 和标准 Skill lint。
+- 提交前在本地运行 npm ci --ignore-scripts、npm run check 和 npm test；宿主提供 Skill lint 时一并运行（如 MCode 内置 skill-creator 附带的 lint-skill.js）。该 lint 不随本仓库提供，未运行时如实说明。
 - npm run check 通过只代表结构合规，不代表模型行为或真实 API 权限正确。
 - 本项目不配置 GitHub Actions；远端同步不替代本地检查。
 - 行为对照使用相同模型、官方文档、材料与工具；对照组不加载本 Skill。

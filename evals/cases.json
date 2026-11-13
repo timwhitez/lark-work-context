@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "notice": "除明确标记的开发请求外，业务案例均为虚构离线材料。该文件描述验收标准，不是自动通过的评测结果。",
+  "notice": "user-current-request 与 official-reuse 改写自实际用户请求；其余业务案例均为虚构离线材料。该文件描述验收标准，不是自动通过的评测结果。",
   "cases": [
     {
       "id": "decision-proposal",
