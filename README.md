@@ -64,3 +64,7 @@ tests/check.test.mjs                检查脚本的正反例测试
 evals/cases.json                    13 个离线行为案例
 docs/evaluation.md                  评估方法与结果
 ~~~
+
+## 许可证
+
+[MIT](LICENSE)
